@@ -12,10 +12,10 @@
 <!-- navbar -->
   <nav>
     <div class="nav-wrapper amber">
-      <a href="index.html" class="brand-logo"><img src="https://img.icons8.com/ios-glyphs/60/000000/ballroom-dance.png"/></a>
+      <a href="/" class="brand-logo"><img src="https://img.icons8.com/ios-glyphs/60/000000/ballroom-dance.png"/></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="student.html">Student</a></li>
-        <li><a href="dance.html">Dance info</a></li>
+        <li><a href="/student">Student</a></li>
+        <li><a href="/dance">Dance info</a></li>
       </ul>
     </div>
   </nav>
@@ -33,7 +33,7 @@
                 <label for="textarea1">Student Search</label>
               </div>
               <div class="card-action" id ="studContainer">
-                <br>
+                <a href="">submit</a>
               </div>
         </div>
         <!-- card -->
@@ -42,18 +42,23 @@
         <!-- card -->
             <div class="card blue-grey darken-1">
               <div class="card-content white-text">
-                <span class="card-title">Create Lesson</span>
-                <textarea id="textarea2" class="materialize-textarea"></textarea>
-                <label for="textarea2">Lesson Title</label>
+                <span class="card-title">Update Student</span>
+                <textarea id="upname" class="materialize-textarea"></textarea>
+                <label for="upname">Student Name</label>
                 <br>
-                <textarea id="lesson" name="lesson"
-                rows="8" cols="33" style="resize: none; background-color: antiquewhite;">
-                </textarea>
-                <label for="lesson">Lesson details</label>
+                <textarea id="upbday" class="materialize-textarea"></textarea>
+                <label for="upbday">birthday</label>
+                <br>
+                <textarea id="uplevel" class="materialize-textarea"></textarea>
+                <label for="uplevel">Dance Level</label>
+                <br>
+                <textarea id="updances" class="materialize-textarea"></textarea>
+                <label for="updances">Dances</label>
+                <br>
               </div>
               <div class="card-action" id ="action">
-                <a href="#">Save Lesson</a>
-                <a href="#">Delete Lesson</a>
+                <a href="#">Submit</a>
+                <a href="#">Delete Student</a>
               </div>
         </div>
         <!-- card -->
@@ -62,31 +67,27 @@
         <!-- card -->
             <div class="card blue-grey darken-1">
               <div class="card-content white-text">
-                <span class="card-title">Student Lessons</span>
-                <p>Search for A Student. The lessons will populate here</p>
-              </div>
-              <div class="card-action" id = "lessonContainer">
+                <span class="card-title">Create Student</span>
+                <textarea id="crname" class="materialize-textarea"></textarea>
+                <label for="crname">Student Name</label>
+                <br>
+                <textarea id="crbday" class="materialize-textarea"></textarea>
+                <label for="crbday">birthday</label>
+                <br>
+                <textarea id="crlevel" class="materialize-textarea"></textarea>
+                <label for="crlevel">Dance Level</label>
+                <br>
+                <textarea id="crdances" class="materialize-textarea"></textarea>
+                <label for="crdances">Dances</label>
                 <br>
               </div>
+              <div class="card-action" >
+                <a href="">Submit</a>
+              </div>
+              </div>
+             
             </div>
         <!-- card -->
-      </div>
-    </div>
-    <div class="row">
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">Student Info</span>
-          <div>Name:<span></span></div>
-          <br>
-          <div>Birthday:<span></span></div>
-          <br>
-          <div>Dance Level: <span></span></div>
-          <br>
-          <p>Dances:<span id="danceContainer"></span></p>
-        </div>
-        <div class="card-action">
-          <div class="notes"></div>
-        </div>
       </div>
     </div>
   </div>
