@@ -1,12 +1,38 @@
 
   $(document).ready(function(){
-    $('select').formSelect();
+    // $('select').formSelect();
     function DANCE(name,pre,int,sen,fin){
     this.name = name;
     this.pre= pre;
     this.int= int;
     this.sen= sen;
     this.fin= fin;
+
+}
+function emptyMoves(){
+    $("#pre").empty()
+    $("#int").empty()
+    $("#sen").empty()
+    $("#fin").empty()
+}
+function populate(object){
+    object.pre.forEach(item=>{
+
+        const newContent =`<li class="collection-item " style="color: white; margin: 2px; ">"${item}"</li>`
+        $("#pre").append(newContent)
+    })
+    object.int.forEach(item=>{
+        const newContent =`<li class="collection-item " style="color: white; margin: 2px;">"${item}"</li>`
+        $("#int").append(newContent)
+    })
+    object.sen.forEach(item=>{
+        const newContent =`<li class="collection-item " style="color: white; margin: 2px; ">"${item}"</li>`
+        $("#sen").append(newContent)
+    })
+    object.fin.forEach(item=>{
+        const newContent =`<li class="collection-item " style="color: white; margin: 2px;" >"${item}"</li>`
+        $("#fin").append(newContent)
+    })
 
 }
 
@@ -26,25 +52,32 @@
         const pasodoble = new DANCE("Paso Doble",["Preliminary Moves","Fwd back walks","Chasse to Left","Promenade Flick","Throwout with UA", "Chasse Combo"],["Intermediate Moves", "Six Count Rt turn ", "Fallaway Cape", "Advanced Throwout","LFT and RT UAT","Lady's Caping Walk"],["Senior Moves","8 Count Right Turn","Press Line To UAT","Cross Over Press", "Chasse Cape","Cape Points"],["Final Moves","Banderillas","Spanish Lunges","Brand Circle to cuddle" ]);
         const merengue = new DANCE("Merengue",["Preliminary Moves", "Basic Chasse", "Fwd and Back Walks","Throwout", "UAT to Right","Reverse UAT"],["Intermediate Moves","Chasse Combo","Compadre Bump", "Alternating Arm Loops", "IBO Rhythm Fwd and Back","IBO Rhythm Side"],["Senior Moves", "Cuban Pete", "Tropical Push", "Wrap Around", "IBO Rock", "Caribbean Rocks"],["Final Moves","Latin Wraps","Hot Tamale","Pretzel"]);
         const westcoast = new DANCE("West Coast Swing",["Preliminary Moves", "Link to Throwout a/b", "Sugar Push", "Left Side Pass/UA Pass", "Right Hand Tuck In Spin", "Reverse Spin From Right Side Pass"],["Intermediate Moves", "Sugar Push to Suprise Tuck in", "Sugar Push Swivel", "The Whip", "Whip Endings a,b,c", "Continuous Whip Turn"],["Senior Moves", "Whip with COntinuous Reverse Underarm","Back Whip", "Pivots to Shoulder Check", "Shaggin'", "Ronde to One Arm Bandit"],["Final Moves", "Opposition Breaks", "Tunnel With Mans Hand Change","Shoulder Turn With Head Roll"]);
-        const bachata = new DANCE("Bachata",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
-        const salsa = new DANCE("Salsa",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
-        const country = new DANCE("Country 2 step",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
-        const latinrumba = new DANCE("Latin Rumba",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
-        const latinchacha = new DANCE("Latin Cha Cha",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
-        const jive = new DANCE("Jive",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
-        const latinsamba= new DANCE("Latin Samba",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
-        const latinpaso = new DANCE("Latin Paso Doble",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
-        const slowwaltz= new DANCE("Slow Waltz",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
-        const slowfox= new DANCE("Slow Foxtrot",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
-        const standardtango= new DANCE("Standard Tango",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
-        const quickstep= new DANCE("Quickstep",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
-        const standardviennese= new DANCE("Standard Viennese Waltz",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
-        const argentine = new DANCE("Argentine Tango",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
-        const hustle = new DANCE("Hustle",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
-        const  zouk = new DANCE("Zouk",["Preliminary Moves"],["Intermediate Moves"],["Senior Moves"],["Final Moves"]);
+        const bachata = new DANCE("Bachata",["Preliminary Moves","Basic Side/Fwd back","Basic box","Turning Breaks","Uat","Cuddle/hammerlock"],["Intermediate Moves","Spot Turn","Bachata Arm/ Head Loops","Cuddle Flips","Different Bachata rhythms", "Arm Toss up, Behind, Around",],["Senior Moves","Arm Loop to duck","Turning Rock to Leg Slide", "Tap and slide Rhythm"," Mans Turn on tap, to back arm Toss","Mans two Hand turn To Peekaboo",],["Final Moves","Romantica Style Body Rolls", "Side Isolations to dip", "Leg Isolation to lean", "Double turn to parallel,hand Switch with Recenter "])
+        const salsa = new DANCE("Salsa",["Preliminary Moves","Basic/Side Basic", "Cross Body/ Adv Cross Body", "5th pos breaks sf", "Right side pass sf","shines social" ],["Intermediate Moves","Salsa Basic W/ Cuban Loops", "Alternating UAT With mans Hand Change behind his Back", "Miami Special", "Copa (social)"],["Senior Moves","Continuous Cross Body in Open Position","Snap Hip Twist", "Hammerlock"],["Final Moves", "Half Moon","SlingShot" ]);
+        const country = new DANCE("Country 2 step",["Preliminary Moves","Basic", "Natural Turn", "Reverse Turn", "Cuddle", "Promenade"],["Intermediate Moves","Reverse Turn from Promenade ", "Sweetheart Right and Left", "Hand to Hand Grapevine Fwd/Back", "Closed Grapevine", "Wrap W/ Check"],["Senior Moves", "Basket whip", "Shoulder catch", "Promenade Pivot", "Wrap W/ Check Turn"],["Final Moves","Egg Beater","Inside weave","Outside Weave", "Outside Inside Weave","Side by side Freespin" ]);
+        const latinrumba = new DANCE("Latin Rumba",["Pre Bronze Moves", "Basic", "Closed Basic", "Open Basic", "Alternative Basic", "Cucaracha", "New York", "Spot Turn", "UAT", "Shoulder to Shoulder", "Hand To Hand", "Progressive Fwd and Back Walks","Side Step", "Cuban Rock"],["Bronze Moves","Progressive Walks in RSP or LSP","Fan","Alemana","Hockey Stick","Natural Top","Opening Out RT and Lft", "Closed Hip Twist"],["Silver Moves", "Open Hip Twist", "Reverse Top", "Opening Out From Reverse Top", "Aida", "Spiral","Curl", "Rope Spinning"],["Gold Moves", "Syncopated Cuban Rock", "Kiki Walks", "Sliding Door", "Fencing", "Three Threes", "Three Alemanas", "Continuous Hip Twist", "Circular Hip Twist"]);
+        const latinchacha = new DANCE("Latin Cha Cha",["Pre Bronze Moves","Basic","Open Basic", "Closed Basic", "New York", "Spot Turn", "UAT", "Shoulder to Shoulder", "Hand to Hand", "3 Chas fwd or back", "Side Steps", "There and Back", "Time Step"],["Bronze Moves", "3 Chas in Rt or Lft side Pos.","Fan","Alemana","Hockey Stick", "Natural Top", "Closed Hip Twist" ],["Silver Moves", "Open Hip Twist", "Reverse Top", "Open out from Reverse Top", "Aida", "Spiral", "Curl", "Rope Spinning", "Cross Basic", "Cuban Breaks", "Split Cuban Breaks", "Chase"],["Gold Moves", "Hip Twist Spiral", "Turkish Towel", "Sweetheart","Follow my leader", "Foot Change 1,2,3&4"]);
+        const jive = new DANCE("Jive",["Pre Bronze Moves", "Basic In Place", "Fallaway Rock", "Fallaway Throwaway", "Link", "Change of Places rt to lft and lft to rt","Change hands behind back", "Hip Bump"],["Bronze Moves","American Spin", "The Walks", "Stop And Go", "Mooch", "Whip", "Throwaway Whip"],["Silver Moves", "Reverse Whip", "Windmill", "Spanish Arms", "Rolling off the Arm", "Simple Spin", "Miami Special"],["Gold Moves", "Overturned Fallaway Throwaway", "Overturned Change of Place Lft to Rt", "Break", "Curly Whip", "Shoulder Spin", "To Heel Swivels", "Chugging", "Chicken Walks", "Catapult", "Stalking Walks"]);
+        const latinsamba= new DANCE("Latin Samba",["Pre Bronze Moves", "Natural Basic", "Reverse Basic", "Side Basic", "Progressive Basic", "Whisk", "Samba Walks", "Side Samba Walks", "Stationary Samba Walks", "Traveling Fwd Bota Fogos", "Criss Cross Bota Fogos"],["Bronze Moves", "Shadow Bota Fogos", "Traveling Back Bota Fogos", "Bota Dogos to PP and CPP", "Criss Cross Voltas", "Shadow Traveling Voltas", "Solo Spot Voltas", "Continuous Spot Voltas", "Reverse Turn", "Corta Jaca", "Closed Rocks", "Foot Change1,2,3,&4"],["Silver Moves", "Open Rocks", "Back Rocks","Plait","Rolling off the Arm","Argentine Crosses","Maypole","Shadow Circular Voltas","Foot Change 5" ],["Gold Moves", "Contra Bota Fogos", "Roundabout", "Natural Roll", "Reverse Roll", "Promenade and Counter Promenade Runs", "Three Step Turn", "Cruzados Walks and Locks", "Foot Change 6 & 7"]);
+        const latinpaso = new DANCE("Latin Paso Doble",["Pre Bronze Moves", "Sur Place", "Basic Fwd/Back", "Chasse Rt/Lft", "Drag", "Promenade Link", "Promenade", "Ecart", "Separation"],["Bronze Moves", "Attack","Huit","Sixteen","Promenade and Counter Promenade", "Grand Circle", "Open Telemark"],["Silver Moves", "La Passe", "Banderillas", "Twist Turn", "Fallaway Reverse Turn", "Coup de Pique", "Left Foot Variation", "Syncopated Chasse to the Right", "Spanish Lines", "Flamenco Taps"],["Gold Moves", "Syncopated Separation", "Traveling Spins From PP & Cpp", "Fregolina", "The Twists", "Chasse Cape"]);
+        const slowwaltz= new DANCE("Slow Waltz",["Pre Bronze Moves","RT and Lft Closed change","Natural Turn","Reverse Turn","Natural Spin Turn","Whisk","Chasse from Promenade Position"],["Bronze Moves","Closed Impetus","Hesitation Change", "Outside Change", "Reverse Corte", "Back Whisk", "Basic Weave","Double Reverse Spin", "Reverse Pivot", "Back Lock", "Progressive Chasse to Right"],["Silver Moves","Weave from Promenade", "Closed Telemark", "Open Telemark", "Open Impetus", "Cross Hesitation","Wing", "Outside Spin", "Turning Lock to L", "Drag Hesitation"],["Gold Moves", "Left Whisk", "Contra Check", "Closed Wing","Turning Lock to Right", "Fallaway Reverse & Slip Pivot", "Hover Corte"]);
+        const slowfox= new DANCE("Slow Foxtrot",["Pre Bronze Moves", "Feather Step", "Three step", "Natural Turn", "Reverse Turn", "Closed Impetus" ],["Bronze Moves","Natural Weave", "Change of Direction", "Basic Weave"],["Silver Moves","Closed Telemark", "Open Telemark", "Feather Ending", "Top Spin", "Hover Feather", "Hover Telemark","Natural Telemark", "Hover Cross","Open Natural Turn", "Outside Swivel","Open Impetus","Weave from Promenade", "Reverse Weave" ],["Gold Moves", "Natural Twist Turn","Natural Twist Turn With weave Ending ","Natural Twist Turn With Closed Impetus and Feather Finis Ending ","Natural Twist Turn With Open Impetus Ending ","Curved Feather to Back Feather", "Natural Zig Zag From Promenade","Fallaway Reverse and Slip Pivot", "Natural Hover Telemark","Bounce Fallaway With Weave Ending"  ]);
+        const standardtango= new DANCE("Standard Tango",["Pre Bronze Moves","Left and Rt Foot Walks", "Progressive side step","Point to promenade","Progressive link","Closed Promenade","Rock Turn", "Open Reverse Turn", "Back Corte"],["Bronze Moves", "Open Promenade","Progressive Side Step Reverse Turn", "Lft and Rt Foot Rock", "Natural Twist Turn", "Natural Promenade Turn"],["Silver Moves", "Promenade link","Four Step", "Back Open Promenade","Outside Swivel", "Reverse Outside Swivel", "Fallaway Promenade", "Four Step Change", "Brush Tap" ],["Gold Moves", "Fallaway Four Step", "Oversway", "Basic Reverse Turn", "The Chase","Fallaway Reverse Slip Pivot", "Five Step", "Overturned Five Step", "Contra Check" ]);
+        const quickstep= new DANCE("Quickstep",["Pre Bronze Moves", "Quarter turn to Rt", "Natural Turn", "Natural Turn w/ Hesitation", "Natural Pivot Turn", "Natural Spin Turn", "Progressive Chasse", "Chasse Reverse Turn", "Forward Lock"],["Bronze Moves", "Closed Impetus", "Back Lock", "Reverse Pivot", "Progressive Chasse Rt", "Tipple Chasse", "Running Finish", "Cross Chasse", "Double Reverse Spin", "Change of Direction"],["Silver Moves", "Quick Open Reverse", "Fish Tail", "Running Right Turn", "Four Quick Run", "V6", "Closed Telemark"],["Gold Moves", "Cross Swivel", "Six Quick Run", "Rumba Cross", "Tipsy to Right", "Tipsy To Left", "Hover Corte"]);
+        const standardviennese= new DANCE("Standard Viennese Waltz",[" Bronze Moves", "Reverse Turn", "Natural Turn","Forward and Backward Changes"],["Silver Moves", "Reverse Fleckerl"],["Gold Moves", "Natural Fleckerl", "Contra Check"],[""]);
+        const argentine = new DANCE("Argentine Tango",["Preliminary Moves", "El Basico", "El Ocho","Double Ocho"],["Intermediate Moves","Backward Ocho","El Gancho to Cobra Fan",],["Senior Moves","La Silla", "Continuous Silla", "Boleo"],["Final Moves","Molinette With Secada", "Advanced Secada"]);
+        const hustle = new DANCE("Hustle",["Preliminary Moves","Basic to Throwout", "Under Arm Turns"],["Intermediate Moves","Arm Loop", "One Arm Bandit","Cuddle" ],["Senior Moves","Reverse Underarm To Rollout", "Continuous Rollout", "Throwout to Wrap"],["Final Moves","traveling Parallel", "Traveling Parallel With Ladies Solo turns"]);
+        const  zouk = new DANCE("Zouk",["Preliminary Moves","Basic In place", "Fwd Back Basic", "Lateral Basic", "Rotating Basic", "Cross Body Lead","UAT"],["Intermediate Moves", "YoYo", "Boomerang", "Prep Turn","Viradnha", "Soltinho"],["Senior Moves","Body Roll From Fwd Basic", "Body Roll From Lateral ","Elastico", "Side Isolations", "Body Roll in Parallel" ],["Final Moves","Traveling Side Isolations", "Tilted Rotating Basic", "Tilted Turn"]);
+        const moveArray = [rumba,chacha,eastcoast,mambo,bolero,waltz,tango,foxtrot,viennese,merengue,westcoast,samba,pasodoble,argentine,hustle,salsa,bachata,zouk,country,slowwaltz,slowfox,standardtango,standardviennese,quickstep,latinchacha,latinrumba,jive,latinsamba,latinpaso]
 //moves
+let x = $("#danceSelect").val()
+console.log(x)
+ emptyMoves();
+ moveArray.forEach(item=>{
+if(item.name.toLowerCase() === x.toLowerCase())
+populate(item)
+ })
 
-       $("#moveContainer").empty() 
 
 
 
