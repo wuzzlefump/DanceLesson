@@ -25,54 +25,54 @@
     <div class="row">
       <div class="col s12 m3">
         <!-- card -->
-            <div class="card blue-grey darken-1">
+            <div class="card blue-grey darken-1 z-depth-5">
               <div class="card-content white-text">
                 <span class="card-title">Find Students</span>
                 <p>Search Students Here:</p>
-                <textarea id="textarea1" class="materialize-textarea"></textarea>
-                <label for="textarea1">Student Search</label>
+                <textarea id="search" class="materialize-textarea"></textarea>
+                <label for="search">Student Search</label>
               </div>
               <div class="card-action" id ="studContainer">
-                <a href="">submit</a>
+                <a id = "studSearch">submit</a>
               </div>
         </div>
         <!-- card -->
       </div>
       <div class="col s12 m6">
         <!-- card -->
-            <div class="card blue-grey darken-1">
+            <div class="card blue-grey darken-1 z-depth-5">
               <div class="card-content white-text">
                 <span class="card-title">Update Student</span>
                 <textarea id="upname" class="materialize-textarea"></textarea>
                 <label for="upname">Student Name</label>
                 <br>
                 <textarea id="upbday" class="materialize-textarea"></textarea>
-                <label for="upbday">birthday</label>
+                <label for="upbday">Birthday</label>
                 <br>
                 <textarea id="uplevel" class="materialize-textarea"></textarea>
                 <label for="uplevel">Dance Level</label>
                 <br>
                 <textarea id="updances" class="materialize-textarea"></textarea>
-                <label for="updances">Dances</label>
+                <label for="updances">Dances (seperate with comma)</label>
                 <br>
               </div>
               <div class="card-action" id ="action">
-                <a href="#">Submit</a>
-                <a href="#">Delete Student</a>
+                <a id="upStudent">Submit</a>
+                <a id="delStudent">Delete</a>
               </div>
         </div>
         <!-- card -->
       </div>
       <div class="col s12 m3">
         <!-- card -->
-            <div class="card blue-grey darken-1">
+            <div class="card blue-grey darken-1 z-depth-5">
               <div class="card-content white-text">
                 <span class="card-title">Create Student</span>
                 <textarea id="crname" class="materialize-textarea"></textarea>
                 <label for="crname">Student Name</label>
                 <br>
-                <textarea id="crbday" class="materialize-textarea"></textarea>
-                <label for="crbday">birthday</label>
+                <input id="crbday" class="datepicker"></input>
+                <label for="crbday">Birthday</label>
                 <br>
                 <textarea id="crlevel" class="materialize-textarea"></textarea>
                 <label for="crlevel">Dance Level</label>
@@ -82,7 +82,7 @@
                 <br>
               </div>
               <div class="card-action" >
-                <a href="">Submit</a>
+                <a id ="crStudent">Submit</a>
               </div>
               </div>
              
