@@ -48,6 +48,15 @@ db.Student.find({}).then(dbStudent=>{
   res.json(err)
 })
 })
+
+app.get("/api/students/search/:mouse",(req,res)=>{
+let studid = req.params.mouse
+  db.Student.findOne({_id: studid}).then(dbStudent =>{
+    res.json(dbStudent)
+  }).catch(err=>{
+    res.json(err)
+  })
+})
 //get routes
 
 //post routes

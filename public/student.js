@@ -15,6 +15,15 @@ $("#studSearch").on("click",(e)=>{
             }
         }
     })
+})
+
+$(document).on("click",".studButton", (e)=>{
+    let mouse = e.target.dataset.student;
+    console.log(mouse);
+
+    $.get(`api/students/search/${mouse}`).then(res=>{
+        console.log(res)
+    })
 
 })
 
