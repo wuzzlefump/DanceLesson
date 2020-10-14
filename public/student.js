@@ -36,6 +36,17 @@ $("#crStudent").on("click",(e)=>{
     console.log(level)
     console.log(dances)
 
+    const Student ={
+        name: name,
+        bday: bday,
+        level: level,
+        dances: dances,
+        lessons: [],
+        moves:[]
+    }
+$.post("/api/students/new", Student).then(data=>{
+    console.log(data)
+})
 })
 
 
