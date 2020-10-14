@@ -10,7 +10,7 @@ $("#studSearch").on("click",(e)=>{
         console.log(data)
         for(let i = 0; i < data.length ;i++){
             if(data[i].name.includes( search.toUpperCase())=== true){
-            let studButton= `<button data-student="${data[i]._id}">${data[i].name}</button>`
+            let studButton= `<button class="amber" data-student="${data[i]._id}">${data[i].name}</button>`
             $("#studContainer").append(studButton)  
             }
         }
