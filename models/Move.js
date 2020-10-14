@@ -6,6 +6,6 @@ const MoveSchema = new Schema({
   Dance: String
 });
 
-const Move = mongoose.model("Move", Move);
+const Move = mongoose.model("Move", MoveSchema);
 
 module.exports = Move;
