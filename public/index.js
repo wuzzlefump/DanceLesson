@@ -23,6 +23,11 @@ $(document).ready(()=>{
 
         $.get(`api/students/search/${mouse}`).then(res=>{
         console.log(res)
+            currentStudent=res
+            $("#names").text(" "+res.name)
+            $("#bdays").text(" "+res.bday.toUpperCase())
+            $("#levels").text(" "+ res.level)
+            $("#danceCon").text(" "+res.dances.join(', ').toUpperCase())
         })
     
     })

@@ -24,7 +24,6 @@ $(document).on("click",".studButton", (e)=>{
     $.get(`api/students/search/${mouse}`).then(res=>{
         console.log(res)
     })
-
 })
 
 $("#upStudent").on("click",(e)=>{
@@ -60,7 +59,7 @@ $("#crStudent").on("click",(e)=>{
         name: name,
         bday: bday,
         level: level,
-        dances: dances,
+        dances: [...dances],
         lessons: [],
         moves:[]
     }

@@ -19,7 +19,7 @@ const StudentSchema = new Schema({
       ref: "Lesson"
     }
   ],
-  Dances:Array,
+  dances:Array,
   moves:[{
     type:Schema.Types.ObjectId,
     ref:"Move"
