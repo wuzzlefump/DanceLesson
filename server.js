@@ -4,7 +4,8 @@ const logger = require("morgan");
 const path = require("path")
 const mongoose = require("mongoose");
 const app = express();
-const db = require("./models")
+const db = require("./models");
+const { nextTick } = require("process");
 // const databaseUrl = "work";
 // const collections = ["Student","Lesson","Move"]
 
@@ -51,11 +52,14 @@ db.Student.find({}).then(dbStudent=>{
 
 app.get("/api/students/search/:mouse",(req,res)=>{
 let studid = req.params.mouse
-  db.Student.findOne({_id: studid}).then(dbStudent =>{
-    res.json(dbStudent)
-  }).catch(err=>{
-    res.json(err)
-  })
+  db.Student.findOne({_id: studid}).populate("moves").populate("lessons").exec((err, dbStudent) =>{
+if(err){
+  return next(err)
+}
+if(!dbStudent){
+  return res.json(401)
+}
+res.json(dbStudent)
 })
 //get routes
 
@@ -72,9 +76,38 @@ app.post("/api/students/new",(req,res)=>{
         })
         res.status(204);
 } )
-//add lesson
-//add moves
-//post routes
+//lesson routes
+app.post("/api/lessons/new",(req,res)=>{
+  console.log(req.body)
+  db.Lesson.create({
+      title: req.body.title,
+      details: req.body.details,
+      }).then(({_id})=> db.Student.findOneAndUpdate({_id:req.body.studid},{$push:{lessons: _id}})).then(dbLesson=>{
+        res.json(dbLesson)
+      }).catch(err=>{
+        res.json(err)
+      })
+      res.status(204);
+    })
+
+
+// move routes
+app.post("/api/moves/new",(req,res)=>{
+  console.log(req.body)
+  db.Move.create({
+      name: req.body.name,
+      dance: req.body.dance,
+      }).then(({_id})=> db.Student.findOneAndUpdate({_id:req.body.studid},{$push:{moves: _id}})).then(dbMove=>{
+        res.json(dbMove)
+      }).catch(err=>{
+        res.json(err)
+      })
+      res.status(204);
+    })
+} )
+//
+
+
 // api routes
 
 app.listen(PORT, () => {

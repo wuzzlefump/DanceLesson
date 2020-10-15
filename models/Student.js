@@ -13,17 +13,9 @@ const StudentSchema = new Schema({
   level:{
     type: String,
   },
-  lessons: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Lesson"
-    }
-  ],
+  lessons: [{ type: Schema.Types.ObjectId,ref: "Lesson"}],
   dances:Array,
-  moves:[{
-    type:Schema.Types.ObjectId,
-    ref:"Move"
-  }]
+  moves:[{ type:Schema.Types.ObjectId,ref:"Move"}]
 });
 
 const Student = mongoose.model("Student", StudentSchema);
