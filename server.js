@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const app = express();
 const db = require("./models");
 const { nextTick } = require("process");
+
 // const databaseUrl = "work";
 // const collections = ["Student","Lesson","Move"]
 
@@ -19,7 +20,6 @@ app.use(express.json());
 app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workdb", { useNewUrlParser: true });
-
 // db.on("error", error => {
 //   console.log("Database Error:", error);
 // });
@@ -76,6 +76,18 @@ app.post("/api/students/new",(req,res)=>{
         })
         res.status(204);
 } )
+//update Student
+app.put("/api/students/update/", (req,res)=>{
+  let param = req.body
+  console.log(param)
+  db.Student.findByIdAndUpdate({_id: param._id},{ name:param.name, bday:param.bday, level: param.level, dances: param.dances},{new:true}).then(dbStud=>{
+    res.json(dbStud)
+  }).catch(err=>{
+    res.json(err)
+  })
+
+  
+})
 //lesson routes
 app.post("/api/lessons/new",(req,res)=>{
   console.log(req.body)

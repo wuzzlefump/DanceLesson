@@ -26,17 +26,7 @@ $(document).on("click",".studButton", (e)=>{
     })
 })
 
-$("#upStudent").on("click",(e)=>{
-    e.preventDefault()
-    let name = $("#upname").val().toUpperCase().trim()
-    let bday = $("#upbday").val()
-    let level = $("#uplevel").val().toUpperCase().trim()
-    let dances = $("#updances").val().split(',')
-    console.log(name)
-    console.log(bday)
-    console.log(level)
-    console.log(dances)
-})
+
 
 $("#delStudent").on("click",(e)=>{
     e.preventDefault();
@@ -47,7 +37,7 @@ $("#delStudent").on("click",(e)=>{
 $("#crStudent").on("click",(e)=>{
     e.preventDefault();
     let name = $("#crname").val().toUpperCase().trim()
-    let bday = $("#crbday").val()
+    let bday = $("#crbday").val().toUpperCase()
     let level = $("#crlevel").val().toUpperCase().trim()
     let dances = $("#crdances").val().split(',')
     console.log(name)
@@ -80,7 +70,26 @@ $(document).on("click", ".studButton", e=>{
         $("#upbday").val(res.bday)
         $("#uplevel").val(res.level)
         $("#updances").val(res.dances)
+        $("#upaction").empty()
+        $("#upaction").append(`<a class="upStudent">Submit</a>`)
     })
+})
+
+$(document).on("click", ".upStudent",e =>{
+    e.preventDefault()
+    let upStud ={
+        _id:currentStudent._id,
+        name:$("#upname").val().toUpperCase(),
+        bday:$("#upbday").val().toUpperCase(),
+        level:$("#uplevel").val().toUpperCase(),
+        dances:$("#updances").val().toUpperCase().split(",")
+    }
+    $.ajax({ method: "PUT",
+            url:`/api/students/update/`,
+            data: upStud
+}).then((res)=>{
+console.log(res) 
+})
 })
 
 })
