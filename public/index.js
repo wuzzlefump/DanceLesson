@@ -128,7 +128,7 @@ $(document).ready(()=>{
         })
     })
 
-    $(document).on("click","closelesson",e=>{
+    $(document).on("click",".closelesson",e=>{
         e.preventDefault();
         let mouse = e.target.dataset.close
         $.ajax({
