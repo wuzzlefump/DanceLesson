@@ -87,6 +87,15 @@ app.put("/api/students/update/", (req,res)=>{
   })
 })
 //lesson routes
+app.delete("/api/lessons/delete/:mouse",(req,res)=>{
+  let mouse = req.params.mouse
+  db.Lesson.findByIdAndDelete({_id:mouse}).then(dbless=>{
+    res.json(dbless)
+  }).catch(err=>{
+    res.json(err)
+  })
+})
+
 app.put("/api/lessons/update/",(req,res)=>{
   let param = req.body
   db.Lesson.findByIdAndUpdate({_id: param._id}, {title:param.title,details:param.details},{new:true}).then(dbLess=>{
@@ -117,6 +126,14 @@ app.get("/api/lessons/search/:mouse", (req,res)=>{
 })
 
 // move routes
+app.delete("/api/moves/delete/:mouse",(req,res)=>{
+  let mouse = req.params.mouse
+  db.Move.findByIdAndDelete({_id:mouse}).then(dbmove=>{
+    res.json(dbmove)
+  }).catch(err=>{
+    res.json(err)
+  })
+})
 app.post("/api/moves/new",(req,res)=>{
   console.log(req.body)
   db.Move.create({
