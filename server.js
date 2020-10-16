@@ -1,4 +1,5 @@
 const express = require("express");
+const session = require("express-session");
 const mongojs = require("mongojs");
 const logger = require("morgan");
 const path = require("path")
@@ -65,7 +66,7 @@ res.json(dbStudent)
 
 //post routes
 //create student
-app.post("/api/students/new",(req,res)=>{
+app.post("/api/students/new/",(req,res)=>{
     db.Student.create(
         {name: req.body.name,
         bday: req.body.bday,
@@ -87,15 +88,15 @@ app.put("/api/students/update/", (req,res)=>{
   })
 })
 //delete student
-app.delete("/api/students/delete/:mouse",(req,res)=>{
-  let mouse = req.params.mouse
-  console.log(mouse)
-  db.Student.findByIdAndDelete({_id:mouse}).then(dbStud=>{
-    res.json(dbStud)
-  }).catch(err=>{
-    res.json(err)
-  })
-})
+// app.delete("student/api/students/delete/:mouse",(req,res)=>{
+//   let mouse = req.params.mouse
+//   console.log(mouse)
+//   db.Student.findByIdAndDelete({_id:mouse}).then(dbStud=>{
+//     res.json(dbStud)
+//   }).catch(err=>{
+//     res.json(err)
+//   })
+// })
 //lesson routes
 app.delete("/api/lessons/delete/:mouse",(req,res)=>{
   let mouse = req.params.mouse

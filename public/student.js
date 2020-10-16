@@ -53,7 +53,7 @@ $("#crStudent").on("click",(e)=>{
         lessons: [],
         moves:[]
     }
-$.post("/api/students/new", Student).then(data=>{
+$.post(`/api/students/new/`, Student).then(data=>{
     console.log(data)
 })
 })
