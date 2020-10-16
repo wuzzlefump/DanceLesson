@@ -82,7 +82,9 @@ $(document).on("click", ".upStudent",e =>{
         name:$("#upname").val().toUpperCase(),
         bday:$("#upbday").val().toUpperCase(),
         level:$("#uplevel").val().toUpperCase(),
-        dances:$("#updances").val().toUpperCase().split(",")
+        dances:$("#updances").val().toUpperCase().split(","),
+        lessons: currentStudent.lessons,
+        moves: currentStudent.moves
     }
     $.ajax({ method: "PUT",
             url:`/api/students/update/`,

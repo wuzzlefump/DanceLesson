@@ -80,7 +80,7 @@ app.post("/api/students/new",(req,res)=>{
 app.put("/api/students/update/", (req,res)=>{
   let param = req.body
   console.log(param)
-  db.Student.findByIdAndUpdate({_id: param._id},{ name:param.name, bday:param.bday, level: param.level, dances: param.dances},{new:true}).then(dbStud=>{
+  db.Student.findByIdAndUpdate({_id: param._id},{ name:param.name, bday:param.bday, level: param.level, dances: param.dances, lessons:param.lessons, moves:param.moves},{new:true}).then(dbStud=>{
     res.json(dbStud)
   }).catch(err=>{
     res.json(err)

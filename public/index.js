@@ -32,7 +32,7 @@ $(document).ready(()=>{
             res.dances.forEach(item => {
                 $("#dancemoves").append(`<div class = "card-action"><h4>${item.toUpperCase()} MOVES</h4><br><textarea class="materialize-textarea" id = "${item}text"></textarea><br><button class="addMove amber" data-name ="${item}">Add Move</button><div id ="${item}Con"></div></div>`)
                 res.moves.forEach(move=>{
-                    if(move.dance===item){
+                    if(move.dance.toUpperCase()===item.toUpperCase()){
                         $("#"+item+"Con").append(`<div class="chip amber">
                         ${move.name}
                         <i class="close material-icons closemove" data-close ="${move._id}">X</i>
