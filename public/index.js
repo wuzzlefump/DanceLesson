@@ -42,7 +42,9 @@ $(document).ready(()=>{
             });
             $("#lessonContainer").empty()
             res.lessons.forEach(lesson=>{
+                if(lesson.title !== undefined){
                 $("#lessonContainer").append(`<div class ="chip amber"><a class="lessButton" style ="color: black;" data-lesson="${lesson._id}">${lesson.title}</a><i class="close material-icons closelesson" data-close ="${lesson._id}">X</i> </div><br>`)
+                }
             })
         })
     })
@@ -78,5 +80,24 @@ $(document).ready(()=>{
                 
             })
         }
+    })
+
+    $(document).on("click", ".lessButton",e=>{
+        e.preventDefault();
+        let mouse = e.target.dataset.lesson
+        $.get(`api/lessons/search/${mouse}`).then(res=>{
+            console.log(res)
+            $("#lessonTitle").val(res.title)
+            $("#lesson").val(res.details)
+            $("#lessAction").empty()
+            $("#lessAction").append(`<a class="upLess" data-lesson ="${mouse}">Update</a><a class="newLess">New Lesson</a>`)
+        })
+    })
+
+    $(document).on("click",".newLess", e=>{
+        $("#lessonTitle").val("")
+        $("#lesson").val("")
+        $("#lessAction").empty()
+        $("#lessAction").append(`<a id="saveLess">Save Lesson</a>`)
     })
     })

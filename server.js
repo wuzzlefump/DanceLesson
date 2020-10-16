@@ -90,6 +90,12 @@ app.post("/api/lessons/new",(req,res)=>{
       res.status(204);
     })
 
+app.get("/api/lessons/search/:mouse", (req,res)=>{
+  let x = req.params.mouse
+  db.Lesson.findOne({_id:x}).then(lesson=>{
+    res.json(lesson)
+  })
+})
 
 // move routes
 app.post("/api/moves/new",(req,res)=>{
