@@ -85,10 +85,17 @@ app.put("/api/students/update/", (req,res)=>{
   }).catch(err=>{
     res.json(err)
   })
-
-  
 })
 //lesson routes
+app.put("/api/lessons/update/",(req,res)=>{
+  let param = req.body
+  db.Lesson.findByIdAndUpdate({_id: param._id}, {title:param.title,details:param.details},{new:true}).then(dbLess=>{
+    res.json(dbLess)
+  }).catch(err=>{
+    res.json(err)
+  })
+})
+
 app.post("/api/lessons/new",(req,res)=>{
   console.log(req.body)
   db.Lesson.create({

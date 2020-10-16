@@ -100,4 +100,21 @@ $(document).ready(()=>{
         $("#lessAction").empty()
         $("#lessAction").append(`<a id="saveLess">Save Lesson</a>`)
     })
+
+    $(document).on("click", ".upLess", e=>{
+        e.preventDefault()
+        let less ={
+            _id:e.target.dataset.lesson,
+            title:$("#lessonTitle").val(),
+            details:$("#lesson").val()
+        }
+
+        $.ajax({ method: "PUT",
+        url:`/api/lessons/update/`,
+        data: less
+    }).then((res)=>{
+    console.log(res) 
     })
+
+    })
+})
