@@ -11,7 +11,7 @@ $(document).ready(()=>{
             console.log(data)
             for(let i = 0; i < data.length ;i++){
                 if(data[i].name.includes( search.toUpperCase())=== true){
-                let studButton= `<div class ="chip amber"><a class="studButton" style ="color: black;" data-student="${data[i]._id}">${data[i].name}</a><i class="close material-icons closestud" data-close ="${data[i]._id}">X</i> </div><br>`
+                let studButton= `<div class ="chip amber"><a class="studButton" style ="color: black;" data-student="${data[i]._id}">${data[i].name}</a> </div><br>`
                 $("#studContainer").append(studButton);
                 }
             }
@@ -128,7 +128,7 @@ $(document).ready(()=>{
         })
     })
 
-    $(document).on("click",".closelesson",e=>{
+    $(document).on("click","closelesson",e=>{
         e.preventDefault();
         let mouse = e.target.dataset.close
         $.ajax({

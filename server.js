@@ -86,6 +86,16 @@ app.put("/api/students/update/", (req,res)=>{
     res.json(err)
   })
 })
+//delete student
+app.delete("/api/students/delete/:mouse",(req,res)=>{
+  let mouse = req.params.mouse
+  console.log(mouse)
+  db.Student.findByIdAndDelete({_id:mouse}).then(dbStud=>{
+    res.json(dbStud)
+  }).catch(err=>{
+    res.json(err)
+  })
+})
 //lesson routes
 app.delete("/api/lessons/delete/:mouse",(req,res)=>{
   let mouse = req.params.mouse
