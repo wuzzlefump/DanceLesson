@@ -1,4 +1,4 @@
-
+let currentStudent;
 $(document).ready(()=>{
 $("#studSearch").on("click",(e)=>{
     e.preventDefault();
@@ -10,8 +10,8 @@ $("#studSearch").on("click",(e)=>{
         console.log(data)
         for(let i = 0; i < data.length ;i++){
             if(data[i].name.includes( search.toUpperCase())=== true){
-            let studButton= `<button class="amber" data-student="${data[i]._id}">${data[i].name}</button>`
-            $("#studContainer").append(studButton)  
+                let studButton= `<div class ="chip amber"><a class="studButton" style ="color: black;" data-student="${data[i]._id}">${data[i].name}</a><i class="close material-icons closestud" data-close ="${data[i]._id}">X</i> </div><br>`
+                $("#studContainer").append(studButton);
             }
         }
     })
@@ -68,5 +68,19 @@ $.post("/api/students/new", Student).then(data=>{
 })
 })
 
+$(document).on("click", ".studButton", e=>{
+    e.preventDefault()
+    let mouse = e.target.dataset.student;
+    console.log(mouse);
+
+    $.get(`api/students/search/${mouse}`).then(res=>{
+    console.log(res)
+        currentStudent = res
+        $("#upname").val(res.name)
+        $("#upbday").val(res.bday)
+        $("#uplevel").val(res.level)
+        $("#updances").val(res.dances)
+    })
+})
 
 })
