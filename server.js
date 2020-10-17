@@ -69,7 +69,7 @@ app.get("/main",isAuthenticated, (req,res) =>{
 
     res.sendFile(path.join(__dirname,"../DanceLesson/public/main.html"));
   
-
+//comment
 })
 
 app.get("/dance", isAuthenticated,  (req, res) => {
