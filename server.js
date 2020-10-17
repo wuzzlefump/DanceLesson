@@ -8,14 +8,15 @@ const MongoStore= require("connect-mongo")(session);
 const app = express();
 const db = require("./models");
 const passport = require("./passport/setup")
-const auth = require("./route/auth")
 const { nextTick } = require("process");
+const isAuthenticated = require("./passport/middlware/isAuthenticated")
 
 // const databaseUrl = "work";
 // const collections = ["Student","Lesson","Move"]
 
 const PORT = process.env.PORT || 3000;
 // const db = mongojs(databaseUrl, collections);
+app.use(passport.initialize());
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -28,27 +29,55 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workdb", { useN
 // });
 app.use(
   session({
-    secret:"secret",
-    resave: false,
+    secret:"keyboard cat",
+    resave: true,
     saveUninitialized: true,
     store: new MongoStore({mongooseConnection: mongoose.connection})
   })
 );
 
-app.use("/api/auth",auth);
 // htmlroutes
+app.post("/api/auth/login",passport.authenticate('local'),(req,res)=>{
+  console.log({
+    req:req,
+    username:req.user.username,
+    id:req.user.id
+  })
+  if(req.user){
+      res.json({
+      username: req.user.username,
+      id: req.user._id
+    });
+  }else{
+    res.status(401).send({error: 'Error logging in!'});
+  }
+  
+})
+
+
+
+app.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
+
 app.get("/", (req, res) => {
   res.send(index.html);
 });
 
-app.get("/main", (req,res) =>{
-  res.sendFile(path.join(__dirname,"../DanceLesson/public/main.html"));
+app.get("/main",isAuthenticated, (req,res) =>{
+
+    res.sendFile(path.join(__dirname,"../DanceLesson/public/main.html"));
+  
+
 })
 
-app.get("/dance", (req, res) => {
+app.get("/dance", isAuthenticated,  (req, res) => {
+
   res.sendFile(path.join(__dirname, "../DanceLesson/public/dance.html"));
 });
-app.get("/student", (req, res) => {
+
+app.get("/student", isAuthenticated,  (req, res) => {
   res.sendFile(path.join(__dirname, "../DanceLesson/public/student.html"));
 });
 
