@@ -4,8 +4,11 @@ const mongojs = require("mongojs");
 const logger = require("morgan");
 const path = require("path")
 const mongoose = require("mongoose");
+const MongoStore= require("connect-mongo")(session);
 const app = express();
 const db = require("./models");
+const passport = require("./passport/setup")
+const auth = require("./route/auth")
 const { nextTick } = require("process");
 
 // const databaseUrl = "work";
@@ -14,7 +17,6 @@ const { nextTick } = require("process");
 const PORT = process.env.PORT || 3000;
 // const db = mongojs(databaseUrl, collections);
 app.use(logger("dev"));
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -24,12 +26,25 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workdb", { useN
 // db.on("error", error => {
 //   console.log("Database Error:", error);
 // });
+app.use(
+  session({
+    secret:"secret",
+    resave: false,
+    saveUninitialized: true,
+    store: new MongoStore({mongooseConnection: mongoose.connection})
+  })
+);
 
-;
+app.use("/api/auth",auth);
 // htmlroutes
 app.get("/", (req, res) => {
   res.send(index.html);
 });
+
+app.get("/main", (req,res) =>{
+  res.sendFile(path.join(__dirname,"../DanceLesson/public/main.html"));
+})
+
 app.get("/dance", (req, res) => {
   res.sendFile(path.join(__dirname, "../DanceLesson/public/dance.html"));
 });
