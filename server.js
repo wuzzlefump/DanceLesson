@@ -95,6 +95,18 @@ db.Student.find({}).then(dbStudent=>{
 })
 })
 
+app.post("/api/students/new/", (req,res) =>{
+  db.Student.create(
+      {name: req.body.name,
+      bday: req.body.bday,
+      level:req.body.level,
+      dances:req.body.dances,
+      lessons:[],
+      moves:[]
+      })
+      res.status(204);
+} )
+
 app.get("/api/students/search/:mouse",(req,res)=>{
 let studid = req.params.mouse
   db.Student.findOne({_id: studid}).populate("moves").populate("lessons").exec((err, dbStudent) =>{
@@ -107,20 +119,9 @@ if(!dbStudent){
 res.json(dbStudent)
 })
 //get routes
-
 //post routes
 //create student
-app.post("/api/students/new/", (req,res) =>{
-    db.Student.create(
-        {name: req.body.name,
-        bday: req.body.bday,
-        level:req.body.level,
-        dances:req.body.dances,
-        lessons:[],
-        moves:[]
-        })
-        res.status(204);
-} )
+
 //update Student
 app.put("/api/students/update/", (req,res)=>{
   let param = req.body
@@ -131,16 +132,6 @@ app.put("/api/students/update/", (req,res)=>{
     res.json(err)
   })
 })
-//delete student
-// app.delete("student/api/students/delete/:mouse",(req,res)=>{
-//   let mouse = req.params.mouse
-//   console.log(mouse)
-//   db.Student.findByIdAndDelete({_id:mouse}).then(dbStud=>{
-//     res.json(dbStud)
-//   }).catch(err=>{
-//     res.json(err)
-//   })
-// })
 //lesson routes
 app.delete("/api/lessons/delete/:mouse",(req,res)=>{
   let mouse = req.params.mouse
