@@ -10,6 +10,7 @@ const db = require("./models");
 const passport = require("./passport/setup")
 const { nextTick } = require("process");
 const isAuthenticated = require("./passport/middlware/isAuthenticated")
+const dotenv = require("dotenv")
 
 // const databaseUrl = "work";
 // const collections = ["Student","Lesson","Move"]
@@ -22,8 +23,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static("public"));
-
-mongoose.connect(MONGODB_URI || "mongodb://localhost/workdb", { useNewUrlParser: true , useUnifiedTopology:true});
+//comment 2
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/workdb', { useNewUrlParser: true , useUnifiedTopology:true});
 // db.on("error", error => {
 //   console.log("Database Error:", error);
 // });
