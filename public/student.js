@@ -3,17 +3,15 @@ $(document).ready(()=>{
 $("#studSearch").on("click",(e)=>{
     e.preventDefault();
     let search = $("#search").val();
-    console.log(search.toLowerCase())
-
     $.get("/api/students").then(data=>{
         $("#studContainer").empty()
-        console.log(data)
         for(let i = 0; i < data.length ;i++){
             if(data[i].name.includes( search.toUpperCase())=== true){
                 let studButton= `<button class="studButton amber" style ="color: black; border-radius:15px; padding: 10px;" data-student="${data[i]._id}">${data[i].name}</button><br>`
                 $("#studContainer").append(studButton);
             }
         }
+        $("#search").val("")
     })
 })
 
@@ -24,11 +22,6 @@ $("#crStudent").on("click",(e)=>{
     let bday = $("#crbday").val().toUpperCase()
     let level = $("#crlevel").val().toUpperCase().trim()
     let dances = $("#crdances").val().split(',')
-    console.log(name)
-    console.log(bday)
-    console.log(level)
-    console.log(dances)
-
     const Student ={
         name: name,
         bday: bday,
@@ -40,6 +33,10 @@ $("#crStudent").on("click",(e)=>{
 $.post("/api/students/new/", Student).then(data=>{
     console.log(data)
 })
+$("#crname").val("")
+$("#crbday").val("")
+$("#crlevel").val("")
+$("#crdances").val("")
 })
 
 $(document).on("click", ".studButton", e=>{
@@ -73,23 +70,13 @@ $(document).on("click", ".upStudent",e =>{
     $.ajax({ method: "PUT",
             url:`/api/students/update/`,
             data: upStud
-}).then((res)=>{
-console.log(res) 
+}).then((res)=>{ 
+$("#upname").val(""),
+$("#upbday").val(""),
+$("#uplevel").val(""),
+$("#updances").val("")
 })
 })
 
-// $(document).on("click",".closestud", e=>{
-//     e.preventDefault()
-//     let mouse = e.target.dataset.close
-//     let del = confirm("Are you sure you want to delete?")
-//     if(del === true){
-//         $.ajax({
-//             method:"DELETE",
-//             url:`/api/students/delete/${mouse}`
-//         }).then(data=>{
-
-//         })
-//     }
-// })
 
 })
