@@ -17,22 +17,6 @@ $("#studSearch").on("click",(e)=>{
     })
 })
 
-// $(document).on("click",".studButton", (e)=>{
-//     let mouse = e.target.dataset.student;
-//     console.log(mouse);
-
-//     $.get(`api/students/search/${mouse}`).then(res=>{
-//         console.log(res)
-//     })
-// })
-
-
-
-$("#delStudent").on("click",(e)=>{
-    e.preventDefault();
-
-
-})
 
 $("#crStudent").on("click",(e)=>{
     e.preventDefault();
@@ -50,8 +34,8 @@ $("#crStudent").on("click",(e)=>{
         bday: bday,
         level: level,
         dances: [...dances],
-        lessons: [""],
-        moves:[""]
+        lessons: [],
+        moves:[]
     }
 $.post("/api/students/new/", Student).then(data=>{
     console.log(data)
