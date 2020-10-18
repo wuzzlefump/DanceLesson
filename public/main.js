@@ -16,7 +16,9 @@ $(document).ready(()=>{
                 }
             }
         })
+        $("#search").val("")
     })
+
     $(document).on("click",".studButton", (e)=>{
         let mouse = e.target.dataset.student;
         console.log(mouse);
@@ -61,7 +63,7 @@ $(document).ready(()=>{
         $.post("/api/moves/new", param).then(data=>{
             console.log(data)
         })
-
+        $("#"+mouse+"text").val("")
     })
 
     $("#saveLess").on("click",e=>{
@@ -79,6 +81,8 @@ $(document).ready(()=>{
             $.post("/api/lessons/new", param).then(data=>{
                 
             })
+            $("#lessonTitle").val("")
+            $("#lesson").val("")
         }
     })
 
