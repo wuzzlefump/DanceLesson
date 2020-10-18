@@ -11,7 +11,7 @@ $(document).ready(()=>{
             console.log(data)
             for(let i = 0; i < data.length ;i++){
                 if(data[i].name.includes( search.toUpperCase())=== true){
-                let studButton= `<div class ="chip amber"><a class="studButton" style ="color: black;" data-student="${data[i]._id}">${data[i].name}</a> </div><br>`
+                let studButton= `<button class="studButton amber" style ="color: black; border-radius:15px; padding:10px;" data-student="${data[i]._id}">${data[i].name}</button> <br>`
                 $("#studContainer").append(studButton);
                 }
             }

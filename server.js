@@ -40,7 +40,6 @@ app.use(
 // htmlroutes
 app.post("/api/auth/login",passport.authenticate('local'),(req,res)=>{
   console.log({
-    req:req,
     username:req.user.username,
     id:req.user.id
   })
@@ -111,7 +110,7 @@ res.json(dbStudent)
 
 //post routes
 //create student
-app.post("/api/students/new/",(req,res)=>{
+app.post("/api/students/new/", (req,res) =>{
     db.Student.create(
         {name: req.body.name,
         bday: req.body.bday,
