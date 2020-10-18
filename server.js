@@ -23,7 +23,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workdb", { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI || "mongodb://localhost/workdb", { useNewUrlParser: true , useUnifiedTopology:true});
 // db.on("error", error => {
 //   console.log("Database Error:", error);
 // });
