@@ -68,18 +68,18 @@ app.get("/", (req, res) => {
 
 app.get("/main",isAuthenticated, (req,res) =>{
 
-    res.sendFile(path.join(__dirname,"../DanceLesson/public/main.html"));
+    res.sendFile(path.join(__dirname,"./public/main.html"));
   
 //comment
 })
 
 app.get("/dance", isAuthenticated,  (req, res) => {
 
-  res.sendFile(path.join(__dirname, "../DanceLesson/public/dance.html"));
+  res.sendFile(path.join(__dirname, "./public/dance.html"));
 });
 
 app.get("/student", isAuthenticated,  (req, res) => {
-  res.sendFile(path.join(__dirname, "../DanceLesson/public/student.html"));
+  res.sendFile(path.join(__dirname, "./public/student.html"));
 });
 
 //html routes
