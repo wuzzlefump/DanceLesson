@@ -50,8 +50,8 @@ $("#crStudent").on("click",(e)=>{
         bday: bday,
         level: level,
         dances: [...dances],
-        lessons: [],
-        moves:[]
+        lessons: [""],
+        moves:[""]
     }
 $.post("/api/students/new/", Student).then(data=>{
     console.log(data)
