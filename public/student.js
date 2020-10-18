@@ -17,14 +17,14 @@ $("#studSearch").on("click",(e)=>{
     })
 })
 
-$(document).on("click",".studButton", (e)=>{
-    let mouse = e.target.dataset.student;
-    console.log(mouse);
+// $(document).on("click",".studButton", (e)=>{
+//     let mouse = e.target.dataset.student;
+//     console.log(mouse);
 
-    $.get(`api/students/search/${mouse}`).then(res=>{
-        console.log(res)
-    })
-})
+//     $.get(`api/students/search/${mouse}`).then(res=>{
+//         console.log(res)
+//     })
+// })
 
 
 
@@ -94,18 +94,18 @@ console.log(res)
 })
 })
 
-$(document).on("click",".closestud", e=>{
-    e.preventDefault()
-    let mouse = e.target.dataset.close
-    let del = confirm("Are you sure you want to delete?")
-    if(del === true){
-        $.ajax({
-            method:"DELETE",
-            url:`/api/students/delete/${mouse}`
-        }).then(data=>{
+// $(document).on("click",".closestud", e=>{
+//     e.preventDefault()
+//     let mouse = e.target.dataset.close
+//     let del = confirm("Are you sure you want to delete?")
+//     if(del === true){
+//         $.ajax({
+//             method:"DELETE",
+//             url:`/api/students/delete/${mouse}`
+//         }).then(data=>{
 
-        })
-    }
-})
+//         })
+//     }
+// })
 
 })
