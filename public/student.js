@@ -58,6 +58,37 @@ $(document).on("click", ".studButton", e=>{
 
 $(document).on("click", ".upStudent",e =>{
     e.preventDefault()
+    // if(currentStudent.lessons.length === 0 && currentStudent.moves.length === 0){
+    //     upStud={
+    //         _id:currentStudent._id,
+    //     name:$("#upname").val().toUpperCase(),
+    //     bday:$("#upbday").val().toUpperCase(),
+    //     level:$("#uplevel").val().toUpperCase(),
+    //     dances:$("#updances").val().toUpperCase().split(","),
+    //     lessons: [{title:placeholder, details:placeholder}],
+    //     moves: [{dance:placeholder,name:placeholder}]
+    //     }
+    // }else if(currentStudent.lessons.length === 0){
+    //     upStud={
+    //         _id:currentStudent._id,
+    //     name:$("#upname").val().toUpperCase(),
+    //     bday:$("#upbday").val().toUpperCase(),
+    //     level:$("#uplevel").val().toUpperCase(),
+    //     dances:$("#updances").val().toUpperCase().split(","),
+    //     lessons: [{title:placeholder, details:placeholder}],
+    //     moves: currentStudent.moves
+    //     }
+    // }else if(currentStudent.moves.length === 0){
+    //     upStud={
+    //         _id:currentStudent._id,
+    //     name:$("#upname").val().toUpperCase(),
+    //     bday:$("#upbday").val().toUpperCase(),
+    //     level:$("#uplevel").val().toUpperCase(),
+    //     dances:$("#updances").val().toUpperCase().split(","),
+    //     lessons: currentStudent.lessons,
+    //     moves: [{dance:placeholder,name:placeholder}]
+    //     }
+    // }else{
     let upStud ={
         _id:currentStudent._id,
         name:$("#upname").val().toUpperCase(),
@@ -66,6 +97,8 @@ $(document).on("click", ".upStudent",e =>{
         dances:$("#updances").val().toUpperCase().split(","),
         lessons: currentStudent.lessons,
         moves: currentStudent.moves
+    // }
+  
     }
     $.ajax({ method: "PUT",
             url:`/api/students/update/`,

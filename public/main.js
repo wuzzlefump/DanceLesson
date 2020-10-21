@@ -45,7 +45,7 @@ $(document).ready(()=>{
             $("#lessonContainer").empty()
             res.lessons.forEach(lesson=>{
                 if(lesson.title !== undefined){
-                $("#lessonContainer").append(`<div class ="chip amber"><a class="lessButton" style ="color: black;" data-lesson="${lesson._id}">${lesson.title}</a><i class="close material-icons closelesson" data-close ="${lesson._id}">X</i> </div><br>`)
+                $("#lessonContainer").append(`<div class ="chip amber lessButton" style ="color:black" data-lesson="${lesson._id}">${lesson.title}<i class="close material-icons closelesson" data-close ="${lesson._id}">X</i> </div><br>`)
                 }
             })
         })
